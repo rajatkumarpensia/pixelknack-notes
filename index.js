@@ -2,7 +2,17 @@
 showNotes();
 //User added note to local storage
 let addbtn = document.getElementById('addbtn');
+let addtextarea = document.getElementById("addText");
+
+
+
+
 addbtn.addEventListener("click", function () {
+    if (addtextarea.value == ""){
+        addtextarea.classList.add('border-danger');
+    }
+    else{
+        addtextarea.classList.remove('border-danger');
     let addtext = document.getElementById("addText");
     let noteList = localStorage.getItem("notes");
     // let notesObj;
@@ -15,9 +25,10 @@ addbtn.addEventListener("click", function () {
     notesObj.push(addtext.value);
     localStorage.setItem("notes", JSON.stringify(notesObj));
     addtext.value = "";
-    console.log(notesObj);
+    // console.log(notesObj);
 
     showNotes();
+}
 })
 
 function showNotes() {
